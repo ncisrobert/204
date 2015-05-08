@@ -202,7 +202,7 @@ function drawNextFrame() {
     if (direction == "ud") {
         if(document.getElementById("drop").style.display != "none") {
             context.drawImage(image2, document.getElementById("fallpos").value, c1 *10);
-            if((document.getElementById("fallpos").value==c1*move1)&&(c1*10>move2-20 && c1*10<move2+20)) {
+            if((document.getElementById("fallpos").value==c1*move1)&&(c1*10>move2<20 && c1*10>move2+20)) {
                 document.getElementById("drop").style.display = "none";
                 clossion = yes;
                 
