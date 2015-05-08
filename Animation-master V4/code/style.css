@@ -1,0 +1,129 @@
+html,
+body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", "Arial", sans-serif;
+    line-height: 150%;
+    font-size: 16px;
+    color: #4d4d4d;
+    background-image: url(../assets/tri.jpg);   
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;  
+}
+
+iframe{
+    display:none;
+}
+
+#title {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.setup {
+    margin: auto;
+    margin-top: 0px;
+    text-align: center;
+    max-width: 550px;
+    background-color: white;
+    padding-top: 2px;
+/*    height: auto;*/
+/*    border-style: solid; border-width: 1px;*/
+    height: 1000px;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    
+}
+
+.setupContent {
+    margin: auto;
+    margin-top: 100px;
+    max-width: 500px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    height: auto;
+}
+
+.setupElement {
+    height: 75px;
+} 
+
+h3 {
+}
+
+#Next {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 80px;
+}
+
+#Submit {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#nAndS {
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+#stage {
+    margin: 0 auto;
+}
+
+td {
+    align-items: center;
+}
+
+.selectImage {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 110px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    height: 390px; 
+}
+
+.selectImage li {
+    list-style: none;
+}
+
+#2ndRow {
+}
+
+table {
+    margin: 0 auto;
+    margin-top: 27px;
+    cursor: pointer;
+    padding-top: 30px;
+}
+
+.cursor {  
+}
+
+#Fall2 {
+    height: 260px;
+}
+
+#Fall {
+    height: 120px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+#Extras {
+    height: 210px;
+}
+
+#black {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.smallPrint {
+    font-size: 15px;
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Let's Animate</title>
+    <meta name="Author" content="" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="java.js"></script>
+</head>
+
+<body onload='setup()'>
+<!-- Black Div -->
+<!--<div id="black"></div>-->
+<!--------------->
+    
+    <div class="setup" id="form">
+        <div class="setupContent">
+            <h1 id="title">Lets Make an Animation</h1>
+
+            <div id="Name" class="setupElement">
+                <h3>Animation Name</h3>
+                <p>Name your animation.</p>
+                <input type="text" id="name">
+            </div>
+
+            <div id="Background" class="setupElement">
+                <h3>Background</h3>
+                <p>Choose one of the preset backgrounds or add your own to the assets/background folder as a .jpg file.</p>
+                <input type="text" id="background" placeholder="Case sensitive">
+                <div class="selectImage">
+                    <table>
+                        <tr>
+                            <td><img src="../assets/Backgrounds/cave.jpg" width="200px">
+                                <p>cave</p>
+                            </td>
+                            <td><img src="../assets/Backgrounds/sun.jpg" width="200px">
+                                 <p>sun</p>
+                            </td>
+                        </tr>
+                        <tr id="2ndRow">
+                            <td><img src="../assets/Backgrounds/planet.jpg" width="200px">
+                                 <p>planet</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div id="Character" class="setupElement">
+                <h3>Character</h3>
+                <p>Choose one of the preset character or add your own to the assets/character as a .png file. Sprite sheets must contain 8 images.</p>
+                <input type="text" id="character">
+                <div class="selectImage">
+                    <table>
+                        <tr>
+                            <td><img src="../assets/Character/space0.png" width="200px">
+                                 <p>space</p>
+                            </td>
+                            <td><img src="../assets/Character/knight0.png" width="200px">
+                                 <p>knight</p>
+                            </td>
+                        </tr>
+                        <tr id="2ndRow">
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="Movement" class="setupElement">
+                <h3>Movement</h3>
+                <p>Choose your character speed and start height.</p>
+                <input type="text" id="movement" placeholder="Speed: 10 - 30">
+                <input type="text" id="movement2" placeholder="Height: 0 - 550">
+            </div>
+
+            <div id="Fall" class="setupElement">
+                <h3>Fall</h3>
+                <p>Would you like an object to fall?</p>
+                <input type="submit" id="YES" value="Yes" onclick='yes()'>
+                <input type="submit" id="NO" value="No" onclick='no()'>
+            </div>
+
+            <div id="Fall2" class="setupElement">
+                <h3>Fall 2</h3>
+                <p>Pick the object you want to fall or upload your own.</p>
+                <p class="smallPrint">Objects will only colide if the postion is the same as the character's.</p>
+                <input type="text" id="fall2" placeholder="Enter object name">
+                <p>Choose the direction would you like it to fall</p>
+                <input type="submit" id="ud" value="Up to down" onclick='ud()'>
+                <input type="submit" id="du" value="Down to up" onclick='du()'>
+                <input type="submit" id="lr" value="Left to right" onclick='lr()'>
+                <input type="submit" id="rl" value="Right to left" onclick='rl()'>
+                <div id="fallbox">
+                    <p>Choose the postion that the object should fall from.</p>
+                    <input type="text" id="fallpos">
+                </div>
+                <div class="selectImage" id="">
+                    <table>
+                        <tr>
+                            <td><img src="../assets/Backgrounds/rock.png" width="200px">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="Extras" class="setupElement">
+                <h3>Extras</h3>
+                <p>Dialoge, Music, etc.</p>
+                <input type="text" id="extras" placeholder="Insert YouTube Link">
+                <p>Now type some text </p>
+                <input type="text" id="text" placeholder="Character Speech">
+                <p>Do you want the character to run from falling object</p>
+
+                <input type="submit" id="" value="Yes" onclick="yes()">
+                <input type="submit" id="" value="No" onclick="no()">
+                <input type="submit" id="" value="left" onclick="left()">
+                <input type="submit" id="" value="right" onclick="right()">
+                <input type="submit" id="" value="up" onclick="up()">
+                <input type="submit" id="" value="down" onclick="down()">
+            </div>
+
+            <div id="UserName" class="setupElement">
+                <h3>Author</h3>
+                <p>Author and cast.</p>
+                <input type="text" id="username">
+            </div>
+
+            <div id="nAndS">
+                <div id="Next">
+                    <input type="submit" value="Next" onclick='Next()'>
+                </div>
+                <div id="Submit">
+                    <input type="submit" onclick='submit(), drawNextFrame()'>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<iframe id="video1" src="https://www.youtube.com/embed/L0MK7qz13bU?html5=1"></iframe>     
+<IMG SRC="" ID="character0" HEIGHT=0>
+<IMG SRC="" ID="character1" HEIGHT=0>
+<IMG SRC="" ID="character2" HEIGHT=0>
+<IMG SRC="" ID="character3" HEIGHT=0>
+<IMG SRC="" ID="character4" HEIGHT=0>
+<IMG SRC="" ID="character5" HEIGHT=0>
+<IMG SRC="" ID="character6" HEIGHT=0>
+<IMG SRC="" ID="character7" HEIGHT=0>
+<IMG SRC="" ID="drop" HEIGHT=0>      
+<IMG SRC="../assets/Backgrounds/white" ID="garden" HEIGHT=0>
+    
+<CANVAS ID="stage" width="1280" height="720"></CANVAS>
+
+<SCRIPT>
+
+var stage = document.getElementById("stage");
+var context = stage.getContext("2d");
+var c1 = 10;
+var c2 = 75; 
+var c3 = 100; 
+var number;    
+var background = document.getElementById("garden");
+    
+function drawNextFrame() {
+    
+    context.drawImage(background,0,0,stage.width,stage.height);
+    var image = document.getElementById("character" + c1%8);
+    var image2 = document.getElementById("drop");
+    
+    
+    if ((clossion == yes) && (yes == yes)) {
+        
+        if (left == left){
+            
+            context.drawImage(image, c1/move1, move2);  
+        }
+        
+        else if (right == right){
+            
+            context.drawImage(image, c1*move1, move2);
+        }
+        
+        else if (up == up){
+            number ++
+            context.drawImage(image, c1*move1, move2*number);
+            alert("up")
+        }
+        
+        else if (down == down) {
+            number ++
+            context.drawImage(image, c1*move1, move2/number);
+        }
+        
+    }
+    
+    context.drawImage(image, c1*move1, move2);
+    
+    alert(c1*10 + " ....." + c2 *10);
+    if (direction == "ud") {
+        if(document.getElementById("drop").style.display != "none") {
+            context.drawImage(image2, document.getElementById("fallpos").value, c1 *10);
+            if((document.getElementById("fallpos").value==c1*move1)&&(c1*10>move2-20 && c1*10<move2+20)) {
+                document.getElementById("drop").style.display = "none";
+                clossion = yes;
+                
+            }
+        }      
+    }
+    
+    if (direction == "du") {
+        if(document.getElementById("drop").style.display != "none") {
+            context.drawImage(image2, document.getElementById("fallpos").value, c2 *10);
+            alert(c2*10);
+            if ((document.getElementById("fallpos").value==c1*move1)&&(c2*10-120==move2-10)) {
+                document.getElementById("drop").style.display = "none";
+                clossion = yes;
+            }
+        }
+    }
+    
+    if (direction == "lr") {
+        if(document.getElementById("drop").style.display != "none") {    
+            context.drawImage(image2, c1*10 , document.getElementById("fallpos").value);
+            
+        }
+    }
+        
+    if (direction == "rl") {
+        if(document.getElementById("drop").style.display != "none") {
+            context.drawImage(image2, c3 *10 , document.getElementById("fallpos").value);
+            if ((document.getElementById("fallpos").value==move2)&&(c3*10==c1*10)) {
+                document.getElementById("drop").style.display = "none";
+                clossion = yes;
+            }
+        }
+    }
+    
+    c1++;
+    c2--;
+    c3--;
+    context.font = "30px Arial";
+    context.fillStyle = "white"
+    context.fillText(Name,10,50);
+    context.font = "25px Arial";
+    context.fillStyle = "white"
+    context.fillText(text,c1*move1,stage.height-move2);
+    setTimeout(drawNextFrame,110);
+}
+    
+</SCRIPT>  
+
+</body>
+
+</html>
